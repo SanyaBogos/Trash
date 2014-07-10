@@ -136,7 +136,7 @@ namespace NextInterProj2.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Birth date")]
         [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
