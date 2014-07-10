@@ -16,6 +16,7 @@ namespace NextInterProj2.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Chat> MyProperty { get; set; }
     }
 
     [Table("UserProfile")]
@@ -52,6 +53,12 @@ namespace NextInterProj2.Models
         public string Message { get; set; }
 
         public DateTime Time { get; set; }
+
+        [ForeignKey("SenderUserId")]
+        public UserProfile Sender { get; set; }
+
+        [ForeignKey("RecieverUserId")]
+        public UserProfile Reciever { get; set; }
     }
 
     public class RegisterExternalLoginModel
