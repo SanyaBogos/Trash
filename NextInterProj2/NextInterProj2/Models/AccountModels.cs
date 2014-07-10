@@ -138,6 +138,7 @@ namespace NextInterProj2.Models
 
         [Required]
         [Display(Name = "Birth date")]
+        [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
 
         [Required]
