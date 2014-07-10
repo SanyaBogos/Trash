@@ -43,27 +43,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.BirthDate)
-                @Html.TextBoxFor(m => m.BirthDate)
-                @*<input class="date-picker" />
-                @Html.TextBox("YourTextBox", "", new { @class = "date-picker" })*@
-                @Html.EditorFor(model => model.BirthDate, new { @class = "date-picker" })
-                @*@Html.TextBoxFor(model => model.BirthDate, new { DateTime.Now, id = "date-picker" })*@
-
-                <div class="container">
-                    <div class="row">
-                        <div class='col-sm-6'>
-                            <div class="form-group">
-                                <div class='input-group date'>
-                                    <input type='text' class="form-control" id='datetimepicker1' />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                @Html.TextBoxFor(m => m.BirthDate, new { @class = "datepicker" })
             </li>
             <li>
                 @Html.LabelFor(m => m.MobileNumber)
@@ -79,9 +59,8 @@
     @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
     <script type="text/javascript">
         $(function () {
-            // This will make every element with the class "date-picker" into a DatePicker element
-            $('#datetimepicker1').datepicker();
-        })
+            $(".datepicker").datepicker();
+        });
     </script>
 }
 
