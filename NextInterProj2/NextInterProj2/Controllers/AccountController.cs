@@ -79,7 +79,15 @@ namespace NextInterProj2.Controllers
                 // Попытка зарегистрировать пользователя
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,
+                        new
+                        {
+                            Email = model.Email,
+                            FirstName = model.FirstName,
+                            LastName = model.LastName,
+                            MobileNumber = model.MobileNumber,
+                            BirthDate = model.BirthDate
+                        });
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
