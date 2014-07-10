@@ -1,0 +1,15 @@
+﻿@model IEnumerable<NextInterProj2.Models.Chat>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+    <p>@Html.DisplayFor(modelItem => item.Sender.LastName)</p>
+    <p>@Html.DisplayFor(modelItem => item.Reciever.LastName)</p>
+    <p>@Html.DisplayFor(modelItem => item.Message)</p>
+    <p>@Html.DisplayFor(modelItem => item.Time)</p>
+}

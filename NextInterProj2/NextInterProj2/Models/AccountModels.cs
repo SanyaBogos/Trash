@@ -16,7 +16,7 @@ namespace NextInterProj2.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Chat> MyProperty { get; set; }
+        public DbSet<Chat> Chats { get; set; }
     }
 
     [Table("UserProfile")]
