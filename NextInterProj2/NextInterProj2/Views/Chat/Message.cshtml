@@ -1,0 +1,25 @@
+﻿@model IEnumerable<NextInterProj2.Models.UserProfile>
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Message</h2>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Birth date</td>
+        <td>Speak</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.FirstName)</td>
+            <td>@Html.DisplayFor(model => item.LastName)</td>
+            <td>@*@Html.DisplayFor(model => item.BirthDate.ToShortDateString())*@</td>
+            <td><a href="~/Chat/Say/@item.UserId">Let`s speak!</a></td>
+        </tr>       
+    }
+</table>
+
