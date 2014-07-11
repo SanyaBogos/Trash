@@ -36,13 +36,28 @@ namespace NextInterProj2.Controllers
         [HttpGet]
         public ActionResult Say(int? recieverId)
         {
+            if (recieverId == null)
+                return HttpNotFound();
             int senderId = (int)WebMatrix.WebData.WebSecurity.CurrentUserId;
-            var messages = db.Chats.Include(m => m.Reciever).Include(n => n.Sender).
+            ViewBag.Messages = db.Chats.Include(m => m.Reciever).Include(n => n.Sender).
                 Where(s => (s.SenderUserId == senderId && s.RecieverUserId == recieverId)
                     ||
                     (s.SenderUserId == recieverId && s.RecieverUserId == senderId)
-                ).OrderBy(o => o.Time);
-            return View(messages.ToList());
+                ).OrderBy(o => o.Time).ToList();
+            ViewData["RecieverId"] = recieverId;
+            return View();
+        }
+
+        [Authorize]
+        [InitializeSimpleMembership]
+        [HttpPost]
+        public ActionResult Say(Chat chat)
+        {
+            chat.Time = DateTime.Now;
+            chat.SenderUserId = (int)WebMatrix.WebData.WebSecurity.CurrentUserId;
+            db.Chats.Add(chat);
+            db.SaveChanges();
+            return View();
         }
     }
 }

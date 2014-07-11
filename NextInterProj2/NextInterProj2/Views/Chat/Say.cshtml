@@ -11,7 +11,7 @@
         <td>Message</td>
         <td>Time</td>
     </tr>
-    @foreach (var item in Model)
+    @foreach (NextInterProj2.Models.Chat item in ViewBag.Messages)
     {
         <tr>
             <td>@Html.DisplayFor(mod => item.Sender.FirstName)</td>
@@ -21,7 +21,9 @@
     }
 </table>
 
-@*@using (@Html.BeginForm("Say", "Chat", FormMethod.Post))
+@using (@Html.BeginForm("Say", "Chat", FormMethod.Post))
 {
-    @Html.Hidden("SenderId", ViewBag.SenderId)
-}*@
+    @Html.Hidden("SenderId", ViewData["RecieverId"])
+    @Html.TextBox("Message", "Enter message")
+    <input type="submit" value="Send" />
+}
