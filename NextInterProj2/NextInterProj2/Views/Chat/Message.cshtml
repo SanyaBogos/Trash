@@ -18,7 +18,7 @@
             <td>@Html.DisplayFor(model => item.FirstName)</td>
             <td>@Html.DisplayFor(model => item.LastName)</td>
             <td>@*@Html.DisplayFor(model => item.BirthDate.ToShortDateString())*@</td>
-            <td><a href="~/Chat/Say/@item.UserId">Let`s speak!</a></td>
+            <td><a href="~/Chat/Say?recieverId=@item.UserId">Let`s speak!</a></td>
         </tr>       
     }
 </table>

@@ -36,9 +36,6 @@ namespace NextInterProj2.Controllers
         [HttpGet]
         public ActionResult Say(int? recieverId)
         {
-            //if (recieverId == null)
-            //    return HttpNotFound();
-
             int senderId = (int)WebMatrix.WebData.WebSecurity.CurrentUserId;
             var messages = db.Chats.Include(m => m.Reciever).Include(n => n.Sender).Where(s => s.SenderUserId == senderId
                 && s.RecieverUserId == recieverId);
