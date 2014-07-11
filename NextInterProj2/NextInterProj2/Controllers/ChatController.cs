@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using NextInterProj2.Models;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
+using NextInterProj2.Filters;
 
 namespace NextInterProj2.Controllers
 {
@@ -31,13 +32,14 @@ namespace NextInterProj2.Controllers
         }
 
         [Authorize]
+        [InitializeSimpleMembership]
+        [HttpGet]
         public ActionResult Say(int? recieverId)
         {
             //if (recieverId == null)
             //    return HttpNotFound();
-            int sendId = (int)WebMatrix.WebData.WebSecurity.CurrentUserId;
 
-            int senderId = Convert.ToInt32(User.Identity.GetUserId());
+            int senderId = (int)WebMatrix.WebData.WebSecurity.CurrentUserId;
             var messages = db.Chats.Include(m => m.Reciever).Include(n => n.Sender).Where(s => s.SenderUserId == senderId
                 && s.RecieverUserId == recieverId);
             return View(messages.ToList());
