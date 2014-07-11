@@ -11,13 +11,17 @@
         <td>Message</td>
         <td>Time</td>
     </tr>
-
-    <tr>
-        @foreach (var item in Model)
-        {
+    @foreach (var item in Model)
+    {
+        <tr>
             <td>@Html.DisplayFor(mod => item.Sender.FirstName)</td>
             <td>@Html.DisplayFor(mod => item.Message)</td>
             <td>@Html.DisplayFor(mod => item.Time)</td>
-        }
-    </tr>
+        </tr>
+    }
 </table>
+
+@*@using (@Html.BeginForm("Say", "Chat", FormMethod.Post))
+{
+    @Html.Hidden("SenderId", ViewBag.SenderId)
+}*@
